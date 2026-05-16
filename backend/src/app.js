@@ -1,5 +1,6 @@
 const express = require("express");
 const { initializeDatabase } = require("./db");
+const repositoryRoutes = require("./routes/repositories");
 
 const app = express();
 
@@ -13,6 +14,8 @@ app.get("/health", (req, res) => {
     message: "DC Megatron backend is running",
   });
 });
+
+app.use("/repositories", repositoryRoutes);
 
 app.listen(3000, () => {
   console.log("Backend server is running on http://localhost:3000");
