@@ -47,4 +47,22 @@ router.get("/", (req, res) => {
   res.json(repositories);
 });
 
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+
+  const result = db
+    .prepare("DELETE FROM repositories WHERE id = ?")
+    .run(id);
+
+  if (result.changes === 0) {
+    return res.status(404).json({
+      error: "Repository not found",
+    });
+  }
+
+  res.json({
+    message: "Repository deleted successfully",
+  });
+});
+
 module.exports = router;
