@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DC Megatron</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <h1>DC Megatron</h1>
+  <p class="subtitle">Repository Credential Manager</p>
+
+  <div class="container">
+
+    <!-- REPOSITORIES SECTION -->
+    <section>
+      <h2>Repositories</h2>
+
+      <form id="add-repo-form">
+        <input type="text" id="repo-url" placeholder="https://github.com/owner/repo" />
+        <button type="submit">Add Repository</button>
+      </form>
+      <p id="repo-error" class="error"></p>
+
+      <table id="repos-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>URL</th>
+            <th>Linked Secret</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="repos-body">
+          <tr><td colspan="4">Loading...</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <hr />
+
+    <!-- SECRETS SECTION -->
+    <section>
+      <h2>Secrets</h2>
+
+      <form id="add-secret-form">
+        <input type="text" id="secret-name" placeholder="Secret name" />
+        <input type="password" id="secret-value" placeholder="Token value" />
+        <button type="submit">Add Secret</button>
+      </form>
+      <p id="secret-error" class="error"></p>
+
+      <table id="secrets-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Created</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="secrets-body">
+          <tr><td colspan="4">Loading...</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+  </div>
+
+  <!-- LINK SECRET MODAL -->
+  <div id="link-modal" class="modal hidden">
+    <div class="modal-box">
+      <h3>Link Secret to Repository</h3>
+      <p id="modal-repo-label"></p>
+      <select id="modal-secret-select"></select>
+      <div class="modal-buttons">
+        <button id="modal-confirm">Link</button>
+        <button id="modal-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
